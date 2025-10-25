@@ -1,0 +1,163 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1"> <!--link rel="stylesheet" href="/mui.css"-->
+  </head>
+  <body>
+<style>
+body{
+  /* filter: invert(1); */
+  font-family: sans-serif;
+  background-color: #232323;
+}
+.container{
+  height: 150px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+table, th, td {
+  
+  color: #FFFFFF;
+  border-collapse: separate;
+}
+
+.table_container{
+  border: 1px solid #555555;
+  width: 100%;
+  overflow: scroll;
+  border-radius: 4px;
+}
+
+table{
+  overflow: hidden;
+  border-radius: 4px;
+  border-spacing: 2px;
+  width: 1500px;
+}
+
+th, td{
+  background-color: #333333;
+  border-radius: 2px;
+  padding: 5px;
+}
+</style>
+
+
+<div class="table_container"></div>
+
+<script src="/eruda.js"></script>
+<script>eruda.init()</script> <!--script src="mui.js"></script-->
+<script>
+;(async function(){
+
+
+var json = await ((
+  await fetch("https://alanchen32768.pythonanywhere.com/api/v1/lifelog/get_recents")
+).json())
+
+function row(
+  time, 
+  applicationLabel, 
+  batteryPct, 
+  charging, 
+  memAvailablePct, 
+  packageName, 
+  activity, 
+  screenOn, 
+  format_type
+  ){
+
+  var row = [
+    time, 
+    applicationLabel, 
+    batteryPct, 
+    charging, 
+    memAvailablePct, 
+    packageName, 
+    activity, 
+    screenOn
+  ]
+  var tr = document.createElement("tr")
+  for(var item of row){
+    var td = document.createElement("td")
+    td.innerText = item
+    tr.append(td)
+  }
+  return tr
+}
+
+function thead_generate(
+  time, 
+  applicationLabel, 
+  batteryPct, 
+  charging, 
+  memAvailablePct, 
+  packageName, 
+  activity, 
+  screenOn, 
+  format_type
+  ){
+
+  var row = [
+    time, 
+    applicationLabel, 
+    batteryPct, 
+    charging, 
+    memAvailablePct, 
+    packageName, 
+    activity, 
+    screenOn
+  ]
+  var tr = document.createElement("tr")
+  for(var item of row){
+    var th = document.createElement("th")
+    th.innerText = item
+    tr.append(th)
+  }
+  return tr
+}
+
+var table = document.createElement("table")
+var thead = document.createElement("thead")
+var tbody = document.createElement("tbody")
+
+thead.append(thead_generate(
+  "时间", 
+  "应用名称", 
+  "电池百分比", 
+  "正在充电", 
+  "可用内存百分比", 
+  "包名", 
+  "activity", 
+  "亮屏"
+))
+
+for(var item of json.data){
+  console.log(item)
+
+  tbody.append(row(
+    new Date(item.timestamp * 1000).toLocaleString(), 
+    item.application_label, 
+    item.battery_pct, 
+    item.charging, 
+    item.mem_available_pct, 
+    item.package_name, 
+    item.activity, 
+    item.screen_on
+  ))
+}
+
+// table.border = "0"
+// table.cellspacing="10"
+table.append(thead)
+table.append(tbody)
+document.querySelector(".table_container")
+.append(table)
+
+
+})()
+</script>
+  </body>
+</html>
