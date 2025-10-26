@@ -3,14 +3,43 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1"> <!--link rel="stylesheet" href="/mui.css"-->
+    <link rel="stylesheet" href="./mui.css">
+    <link rel="stylesheet" href="./progress.css">
+    <!--link rel="stylesheet" href="/mui/icons/MaterialIcons/index.css"-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&icon_names=arrow_menu_close,arrow_menu_open,dark_mode,light_mode,more_vert,unfold_less,unfold_more" />
   </head>
-  <body>
+  <body class="dark mui-theme_dark mui-theme_device_default">
 <style>
 body{
   /* filter: invert(1); */
   font-family: sans-serif;
-  background-color: #232323;
+  background-color: #EEEEEE;
+  --primary: rgb(51, 215, 255);
+  /* filter: hue-rotate(90deg) invert(1); */
 }
+
+html body.mui-theme_dark.mui-theme_device_default{
+  /* --mui-color_accent_rgb: 85, 170, 255; */
+  /* --mui-color_accent_rgb: 0, 103, 125; */
+  --mui-color_accent_rgb: 126, 185, 200;
+  --mui-color_accent_rgb: 178, 235, 255;
+  
+  --mui-color_accent_rgb: 51, 215, 255;
+  
+  --mui-color_background: #121D21;
+
+  /* --mui-color_on_background_rgb: 126, 185, 200; */
+  /* --mui-color_on_background_rgb: 178, 235, 255; */
+
+}
+
+.app{
+  /* background-color: #121D21; */
+  padding: 16px;
+  padding-top: 32px;
+  background-color: #07151A;
+}
+
 .container{
   height: 150px;
   width: 100%;
@@ -20,14 +49,7 @@ body{
 table, th, td {
   
   color: #FFFFFF;
-  border-collapse: separate;
-}
-
-.table_container{
-  border: 1px solid #555555;
-  width: 100%;
-  overflow: scroll;
-  border-radius: 4px;
+  border-collapse: separate; 
 }
 
 table{
@@ -38,38 +60,298 @@ table{
 }
 
 th, td{
-  background-color: #333333;
+  background-color: #FFFFFF;
+  color: #232323;
   border-radius: 2px;
   padding: 5px;
+  transition: 0.3s background-color, 
+    0.3s color, 
+    0.3s border-radius, 
+    0.5s padding;
 }
+
+.table_container{
+  border: 1px solid #232323;
+  width: 100%;
+  overflow: scroll;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+tr:hover td{
+  background-color: #DDDDDD;
+}
+
+/* 深色模式 */
+
+body.dark{
+  background-color: #07151A;
+}
+
+.dark table, .dark th, .dark td {
+  color: #FFFFFF;
+}
+
+.dark table{
+}
+
+.dark th, .dark td{
+  background-color: #333333;
+}
+
+
+
+.dark .table_container{
+  border: 1px solid #555555;
+}
+
+.dark tr:hover td{
+  background-color: #444444;
+}
+
+/* 状态卡片 */
+
+.status_card{
+  --w: min(360px, calc(100vw - 14px));
+  width: 100%;
+  height: ;/* calc(0.6 * var(--w)); */
+  /* border: 1px solid #555555; */
+  margin-bottom: 10px;
+  border-radius: 27px;
+  box-sizing: border-box;
+  padding: 20px;
+  background-color: #091C23;
+  color: #33D7FF;
+  display: grid;
+  grid-template-columns: 40px 1fr;
+
+  grid-column-gap: 16px;
+}
+
+.dark .status_card{
+  color: #B9C9CF;
+  /* font-size: 22px; */
+  
+  
+}
+
+
+
+.basic.table_container table{
+  width: 100%;
+}
+
+.basic.table_container table th:not(.basic_info), 
+.basic.table_container table td:not(.basic_info){
+  display: none;
+}
+
+/* md3 */
+
+.md3.table_container{
+  border: none;
+}
+
+.md3.table_container th, 
+.md3.table_container tr td{
+  color: #B9C9CF;
+  background-color: #091C23;
+  border-radius: 3px;
+  padding: 14px;
+  box-sizing: border-box;
+  height: 72px;
+}
+
+.md3.table_container table thead th{
+  background-color: #004E5F;
+  color: #B2EBFF;
+  height: 72px;
+}
+
+.md3.table_container table tr th{
+  background-color: #004E5F;
+  color: #B2EBFF;
+}
+
+.md3.table_container table tr th:first-child{
+  border-top-left-radius: 24px;
+}
+
+.md3.table_container table tr th:last-child{
+  border-top-right-radius: 24px;
+}
+
+.md3.table_container table th.batteryPct{
+  border-top-right-radius: 24px;
+}
+
+
+.last_n_only.table_container table tbody tr:not(.last_n_item){
+  display: none;
+}
+
+.status_online_light{
+  background-color: #004E5F;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+}
+
+.status_info_title{
+  font-size: 16px;
+  color: #D8E4EA;
+  margin-bottom: 5px;
+}
+
+.status_info_text{
+  font-size: 14px;
+  color: #B9C9CF;
+}
+
+.mui-top_app_bar{
+  background-color: #07151A;
+  color: #D8E4EA;
+}
+
+.mui-top_app_bar .mui-icon{
+  color: #D8E4EA;
+}
+
+.mui-top_app_bar_title{
+  font-weight: 500;
+}
+
+.loading_cover{
+  background-color: #07151A;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+}
+
+.loading_cover.hide{
+  pointer-events: none;
+  opacity: 0;
+}
+/* 完成后端修改后可移除 */
+.table_container:not(.last_n_only) th, 
+.table_container:not(.last_n_only) td{
+  transition: 0s;
+}
+
+
 </style>
 
 
-<div class="table_container"></div>
+<div class="mui-top_app_bar mui-elevation">
+  
+  <div class="mui-top_app_bar_title">我在干什么</div>
+
+  <div class="mui-top_app_bar_button_group">
+    <label class="mui-top_app_bar_button_group_icon_button_wrapper mui-ripple_dispatcher">
+      <button class="mui-button mui-button_icon_button_style mui-ripple mui-rounded" id="last_n_toggle" translate="no">
+        <span class="material-symbols-outlined mui-icon">unfold_more</span>
+      </button>
+    </label>
+    <label class="mui-top_app_bar_button_group_icon_button_wrapper  mui-ripple_dispatcher">
+      <button class="mui-button mui-button_icon_button_style mui-ripple mui-rounded" id="basic_toggle" translate="no">
+        <span class="material-symbols-outlined mui-icon">arrow_menu_open</span>
+      </button>
+    </label>
+    <label class="mui-top_app_bar_button_group_icon_button_wrapper  mui-ripple_dispatcher">
+      <button class="mui-button mui-button_icon_button_style mui-ripple mui-rounded" id="theme_toggle" translate="no">
+        <span class="material-symbols-outlined mui-icon">light_mode</span>
+      </button>
+    </label>
+  </div>
+</div>
+
+<div class="app">
+  <div class="status_card mui-ripple">
+    <div class="status_online_light">
+
+<svg xmlns="http://www.w3.org/2000/svg"
+  height="24px"
+  viewBox="0 -960 960 960"
+  width="24px"
+  fill="#B2EBFF">
+  <path
+    d="M234-276q51-39 114-61.5T480-360q69 0 132 22.5T726-276q35-41 54.5-93T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 59 19.5 111t54.5 93Zm246-164q-59 0-99.5-40.5T340-580q0-59 40.5-99.5T480-720q59 0 99.5 40.5T620-580q0 59-40.5 99.5T480-440Zm0 360q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q53 0 100-15.5t86-44.5q-39-29-86-44.5T480-280q-53 0-100 15.5T294-220q39 29 86 44.5T480-160Zm0-360q26 0 43-17t17-43q0-26-17-43t-43-17q-26 0-43 17t-17 43q0 26 17 43t43 17Zm0-60Zm0 360Z" />
+</svg>
+
+<!--span class="material-icons material-icons-outlined mui-icon">account_circle</span-->
+
+    </div>
+    <div class="status_info">
+      <div class="status_info_title">在线</div>
+      <div class="status_info_text">哔哩哔哩 - 视频详情页</div>
+    </div>
+  </div>
+  
+
+<!--label class="mui-checkbox mui-ripple_dispatcher">
+  <input type="checkbox" checked="">
+  <div class="mui-ripple mui-rounded"></div>
+  <div class="mui-checkbox_box">
+    <div class="mui-checkbox_box_inner"></div>
+  </div>
+</label-->
+
+  <div class="table_container md3 basic last_n_only">
+    
+  </div>
+</div>
+
+
+<div class="loading_cover">
+
+<div class="progress_circular_indeterminate">
+<svg width="28" height="28" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg"
+  transform='scale(2)'>>
+    <circle cx="14" cy="14" r="12.5" fill-opacity="0" stroke-width="3" stroke="var(--primary)" stroke-dasharray="61.0905 10000" stroke-linecap="round" style="transform:rotate(-95deg) scale(10)" transform-origin="center" class="progress_circular_indeterminate_circle"></circle>
+</svg>
+</div>
+
+</div>
 
 <script src="/eruda.js"></script>
 <script>eruda.init()</script> <!--script src="mui.js"></script-->
+<script src="/mui.js"></script>
+
 <script>
 ;(async function(){
+    
+const tsFormatter = new Intl.DateTimeFormat('zh-CN', {
+  month: '2-digit',
+  day: '2-digit',
+  hour: '2-digit',
+  minute: '2-digit',
+  hour12: false,
+  timeZone: 'Asia/Shanghai'
+});
 
+var basicInfoKeys = ["time", "applicationLabel", "batteryPct"]
 
 var json = await ((
   await fetch("https://alanchen32768.pythonanywhere.com/api/v1/lifelog/get_recents")
 ).json())
 
-function row(
-  time, 
-  applicationLabel, 
-  batteryPct, 
-  charging, 
-  memAvailablePct, 
-  packageName, 
-  activity, 
-  screenOn, 
-  format_type
+function row_generate(
+  data, 
+  is_thead=false, 
+  is_last_n=false
   ){
 
-  var row = [
+  /* var row = {
     time, 
     applicationLabel, 
     batteryPct, 
@@ -78,75 +360,81 @@ function row(
     packageName, 
     activity, 
     screenOn
-  ]
+  } */
   var tr = document.createElement("tr")
-  for(var item of row){
-    var td = document.createElement("td")
-    td.innerText = item
+  if(is_last_n){
+    tr.classList.add("last_n_item")
+  }
+
+  for(var key in data){
+    var td = document.createElement(is_thead ? "th" : "td")
+    
+    td.innerText = data[key]
+    if(!is_thead){
+      if((key == "charging" || key == "screenOn") && data[key]){
+        td.style.backgroundColor = "#006CC7"
+      }
+      if(key == "time"){
+        td.innerText = tsFormatter.format(data["time"] * 1000)
+        // new Date(data[key] * 1000).toLocaleString()
+      }
+    }
+
+    if(basicInfoKeys.includes(key)){
+      td.classList.add("basic_info")
+    }
+    td.classList.add(key)
+    td.classList.add("mui-ripple")
+    
     tr.append(td)
+  }
+  if(is_thead){
+    console.log(tr)
   }
   return tr
 }
 
-function thead_generate(
-  time, 
-  applicationLabel, 
-  batteryPct, 
-  charging, 
-  memAvailablePct, 
-  packageName, 
-  activity, 
-  screenOn, 
-  format_type
-  ){
-
-  var row = [
-    time, 
-    applicationLabel, 
-    batteryPct, 
-    charging, 
-    memAvailablePct, 
-    packageName, 
-    activity, 
-    screenOn
-  ]
-  var tr = document.createElement("tr")
-  for(var item of row){
-    var th = document.createElement("th")
-    th.innerText = item
-    tr.append(th)
-  }
-  return tr
+function hide_loading_cover(){
+  document.querySelector('.loading_cover').classList.add('hide')
+  // document.querySelector('.loading_cover').addEventListener(
 }
 
 var table = document.createElement("table")
 var thead = document.createElement("thead")
 var tbody = document.createElement("tbody")
 
-thead.append(thead_generate(
-  "时间", 
-  "应用名称", 
-  "电池百分比", 
-  "正在充电", 
-  "可用内存百分比", 
-  "包名", 
-  "activity", 
-  "亮屏"
-))
+thead.append(row_generate({
+    time: "时间", 
+    applicationLabel: "应用名称", 
+    batteryPct: "电量", 
+    charging: "正在充电", 
+    memAvailablePct: "可用内存百分比", 
+    packageName: "包名", 
+    activity: "activity", 
+    screenOn: "亮屏", 
+  }, true, false)
+)
 
-for(var item of json.data){
-  console.log(item)
+for(var key in json.data){
+  // console.log(item)
 
-  tbody.append(row(
-    new Date(item.timestamp * 1000).toLocaleString(), 
-    item.application_label, 
-    item.battery_pct, 
-    item.charging, 
-    item.mem_available_pct, 
-    item.package_name, 
-    item.activity, 
-    item.screen_on
-  ))
+  let item = json.data[key]
+  let is_last_n = json.data.length - key <= 10
+
+  console.log(is_last_n)
+  
+  tbody.append(
+    row_generate({
+      time: item.timestamp, 
+      applicationLabel: item.application_label, 
+      batteryPct: item.battery_pct, 
+      charging: item.charging, 
+      memAvailablePct: item.mem_available_pct, 
+      packageName: item.package_name, 
+      activity: item.activity, 
+      screenOn: item.screen_on
+    }, false, is_last_n)
+  )
 }
 
 // table.border = "0"
@@ -157,7 +445,79 @@ document.querySelector(".table_container")
 .append(table)
 
 
+var activityInfoDict = {
+  "com.bilibili.video.story.StoryVideoActivity": "短视频", 
+  "com.bilibili.ship.theseus.detail.UnitedBizDetailsActivity": "视频详情页", 
+  "com.android.launcher.Launcher": "桌面", 
+  "com.termux.x11.MainActivity": "桌面环境"
+}
+
+var lasted = json.data[json.data.length - 1]
+var online = (lasted.timestamp * 1000 - Date.now()) < 10 * 60 * 1000
+var activityFull = lasted.activity.startsWith(".") ? lasted.package_name + lasted.activity : lasted.activity
+// 最后上传日志时间距离现在大于10min
+
+d1 = {
+  online, 
+  application_label: lasted.application_label
+}
+
+console.log(d1)
+
+status_text = 
+`${lasted.application_label}\
+${activityFull in activityInfoDict ? 
+' - ' + activityInfoDict[activityFull] : ""}
+`
+/*
+document.querySelector(".status_card").innerText = status_text
+*/
+
+
+
+document.querySelector(".status_card .status_info_title").innerText = online ? "在线" : "离线"
+document.querySelector(".status_card .status_info_text").innerText = status_text
+
+hide_loading_cover()
+
 })()
+
+var table_container = document.querySelector(".table_container")
+var last_n_toggle = document.querySelector("#last_n_toggle")
+
+last_n_toggle.addEventListener('click', ()=>{
+  table_container.classList.toggle('last_n_only')
+  if(table_container.classList.contains('last_n_only')){
+    last_n_toggle.querySelector(".mui-icon").innerHTML = 'unfold_more'
+  }else{
+    last_n_toggle.querySelector(".mui-icon").innerHTML = 'unfold_less'
+  }
+})
+
+var basic_toggle = document.querySelector("#basic_toggle")
+
+basic_toggle.addEventListener('click', ()=>{
+  table_container.classList.toggle('basic')
+  table_container.classList.toggle('md3')
+  if(table_container.classList.contains('basic')){
+    basic_toggle.querySelector(".mui-icon").innerHTML = 'arrow_menu_open'
+  }else{
+    basic_toggle.querySelector(".mui-icon").innerHTML = 'arrow_menu_close'
+  }
+})
+
+var theme_toggle = document.querySelector("#theme_toggle")
+
+theme_toggle.addEventListener('click', ()=>{
+  document.body.classList.toggle('dark')
+  document.body.classList.toggle('mui-theme_dark')
+  if(document.body.classList.contains('dark')){
+    theme_toggle.querySelector(".mui-icon").innerHTML = 'light_mode'
+  }else{
+    theme_toggle.querySelector(".mui-icon").innerHTML = 'dark_mode'
+  }
+})
+
 </script>
   </body>
 </html>

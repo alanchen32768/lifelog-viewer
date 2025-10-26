@@ -1,0 +1,55 @@
+.progress_circular_indeterminate{
+    width: 28px;
+    height: 28px;
+    animation: progress_circular_indeterminate_animation linear 1568.2352941176ms infinite;
+}
+
+@keyframes progress_circular_indeterminate_animation{
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+.progress_circular_indeterminate_circle{
+    animation: progress_circular_indeterminate_circle_animation cubic-bezier(0.2, 0, 0, 1) 5332ms infinite;
+}
+
+@keyframes progress_circular_indeterminate_circle_animation{
+    0%{
+        stroke-dasharray: 2.18 1000;
+        transform: rotate(-95deg);
+    }
+    12.5%{
+        stroke-dasharray: 61.0905 1000;
+        transform: rotate(-95deg);
+    }
+    25%{
+        stroke-dasharray: 2.18 1000;
+        transform: rotate(175deg);
+    }
+    37.5%{
+        stroke-dasharray: 61.0905 1000;
+        transform: rotate(175deg);
+    }
+    50%{
+        stroke-dasharray: 2.18 1000;
+        transform: rotate(445deg);
+    }
+    62.5%{
+        stroke-dasharray: 61.0905 1000;
+        transform: rotate(445deg);
+    }
+    75%{
+        stroke-dasharray: 2.18 1000;
+        transform: rotate(715deg);
+    }
+    87.5%{
+        stroke-dasharray: 61.0905 1000;
+        transform: rotate(715deg);
+    }
+    100%{
+        stroke-dasharray: 2.18 1000;
+        transform: rotate(985deg);
+    }
+}
+
