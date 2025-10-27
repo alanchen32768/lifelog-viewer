@@ -6,15 +6,64 @@
     <link rel="stylesheet" href="./mui.css">
     <link rel="stylesheet" href="./progress.css">
     <!--link rel="stylesheet" href="/mui/icons/MaterialIcons/index.css"-->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&icon_names=arrow_menu_close,arrow_menu_open,dark_mode,light_mode,more_vert,unfold_less,unfold_more" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&icon_names=arrow_menu_close,arrow_menu_open,color_lens,dark_mode,light_mode,more_vert,unfold_less,unfold_more" />
   </head>
   <body class="dark mui-theme_dark mui-theme_device_default">
 <style>
+
+/* 颜色 */
+
+body{
+  --mui-var-hue: 210;
+  --mui-var-saturation_multiple: 0.7;
+
+}
+
+body{
+  --mui-color-primary: hsl(var(--mui-var-hue), calc(var(--mui-var-saturation_multiple) * 100%), 25%);
+  --mui-color-background: hsl(var(--mui-var-hue), calc(var(--mui-var-saturation_multiple) * 100%), 97%);
+  --mui-color-on_background: hsl(var(--mui-var-hue), calc(var(--mui-var-saturation_multiple) * 30%), 10%);
+
+  --mui-color-card_hl-background: hsl(var(--mui-var-hue), calc(var(--mui-var-saturation_multiple) * 100%), 85%);
+  --mui-color-card_hl-title: hsl(var(--mui-var-hue), calc(var(--mui-var-saturation_multiple) * 100%), 10%);
+
+  --mui-color-card-background: hsl(var(--mui-var-hue), calc(var(--mui-var-saturation_multiple) * 60%), 93%);
+  --mui-color-card-title: hsl(var(--mui-var-hue), calc(var(--mui-var-saturation_multiple) * 30%), 10%);
+
+  --mui-color-context_menu-background: hsl(var(--mui-var-hue), calc(var(--mui-var-saturation_multiple) * 17%), 21%);
+  --mui-color-context_menu-title: hsl(var(--mui-var-hue), calc(var(--mui-var-saturation_multiple) * 19%), 77%);
+}
+
+body.dark{
+  --mui-color-primary: hsl(var(--mui-var-hue), calc(var(--mui-var-saturation_multiple) * 100%), 60%);
+  --mui-color-background: hsl(var(--mui-var-hue), calc(var(--mui-var-saturation_multiple) * 60%), 5%);
+  --mui-color-on_background: hsl(var(--mui-var-hue), calc(var(--mui-var-saturation_multiple) * 30%), 90%);
+
+  --mui-color-card_hl-background: hsl(var(--mui-var-hue), calc(var(--mui-var-saturation_multiple) * 100%), 20%);
+  --mui-color-card_hl-title: hsl(var(--mui-var-hue), calc(var(--mui-var-saturation_multiple) * 100%), 85%);
+
+  --mui-color-card-background: hsl(var(--mui-var-hue), calc(var(--mui-var-saturation_multiple) * 60%), 10%);
+  --mui-color-card-title: hsl(var(--mui-var-hue), calc(var(--mui-var-saturation_multiple) * 20%), 80%);
+
+--mui-color-context_menu-background: hsl(var(--mui-var-hue), calc(var(--mui-var-saturation_multiple) * 100%), 97%);
+  --mui-color-context_menu-title: hsl(var(--mui-var-hue), calc(var(--mui-var-saturation_multiple) * 15%), 27%);
+}
+
+
+
+
+
+
+
+
+
+
+
 body{
   /* filter: invert(1); */
   font-family: sans-serif;
-  background-color: #EEEEEE;
-  --primary: rgb(51, 215, 255);
+  background-color: var(--mui-color-background);
+  /* --primary: rgb(51, 215, 255); */
   /* filter: hue-rotate(90deg) invert(1); */
 }
 
@@ -37,7 +86,7 @@ html body.mui-theme_dark.mui-theme_device_default{
   /* background-color: #121D21; */
   padding: 16px;
   padding-top: 32px;
-  background-color: #07151A;
+  background-color: var(--mui-color-background);
 }
 
 .container{
@@ -85,7 +134,7 @@ tr:hover td{
 /* 深色模式 */
 
 body.dark{
-  background-color: #07151A;
+  background-color: var(--mui-color-background);
 }
 
 .dark table, .dark th, .dark td {
@@ -120,8 +169,8 @@ body.dark{
   border-radius: 27px;
   box-sizing: border-box;
   padding: 20px;
-  background-color: #091C23;
-  color: #33D7FF;
+  background-color: var(--mui-color-card-background);
+  color: var(--mui-color-on_background);
   display: grid;
   grid-template-columns: 40px 1fr;
 
@@ -129,7 +178,7 @@ body.dark{
 }
 
 .dark .status_card{
-  color: #B9C9CF;
+  color: var(--mui-color-card-title);
   /* font-size: 22px; */
   
   
@@ -154,8 +203,8 @@ body.dark{
 
 .md3.table_container th, 
 .md3.table_container tr td{
-  color: #B9C9CF;
-  background-color: #091C23;
+  color: var(--mui-color-card-title);
+  background-color: var(--mui-color-card-background);
   border-radius: 3px;
   padding: 14px;
   box-sizing: border-box;
@@ -163,14 +212,14 @@ body.dark{
 }
 
 .md3.table_container table thead th{
-  background-color: #004E5F;
-  color: #B2EBFF;
+  background-color: var(--mui-color-card_hl-background);
+  color: var(--mui-color-card_hl-title);
   height: 72px;
 }
 
 .md3.table_container table tr th{
-  background-color: #004E5F;
-  color: #B2EBFF;
+  background-color: var(--mui-color-card_hl-background);
+  color: var(--mui-color-card_hl-title);
 }
 
 .md3.table_container table tr th:first-child{
@@ -191,7 +240,7 @@ body.dark{
 }
 
 .status_online_light{
-  background-color: #004E5F;
+  background-color: var(--mui-color-card_hl-background);
   width: 40px;
   height: 40px;
   border-radius: 20px;
@@ -202,22 +251,22 @@ body.dark{
 
 .status_info_title{
   font-size: 16px;
-  color: #D8E4EA;
+  color: var(--mui-color-on_background);
   margin-bottom: 5px;
 }
 
 .status_info_text{
   font-size: 14px;
-  color: #B9C9CF;
+  color: var(--mui-color-card-title);
 }
 
 .mui-top_app_bar{
-  background-color: #07151A;
-  color: #D8E4EA;
+  background-color: var(--mui-color-background);
+  color: var(--mui-color-on_background);
 }
 
 .mui-top_app_bar .mui-icon{
-  color: #D8E4EA;
+  color: var(--mui-color-on_background);
 }
 
 .mui-top_app_bar_title{
@@ -225,7 +274,7 @@ body.dark{
 }
 
 .loading_cover{
-  background-color: #07151A;
+  background-color: var(--mui-color-background);
   position: fixed;
   left: 0;
   top: 0;
@@ -252,7 +301,7 @@ body.dark{
 </style>
 
 
-<div class="mui-top_app_bar mui-elevation">
+<div class="mui-top_app_bar">
   
   <div class="mui-top_app_bar_title">我在干什么</div>
 
@@ -269,7 +318,7 @@ body.dark{
     </label>
     <label class="mui-top_app_bar_button_group_icon_button_wrapper  mui-ripple_dispatcher">
       <button class="mui-button mui-button_icon_button_style mui-ripple mui-rounded" id="theme_toggle" translate="no">
-        <span class="material-symbols-outlined mui-icon">light_mode</span>
+        <span class="material-symbols-outlined mui-icon">color_lens</span>
       </button>
     </label>
   </div>
@@ -283,7 +332,7 @@ body.dark{
   height="24px"
   viewBox="0 -960 960 960"
   width="24px"
-  fill="#B2EBFF">
+  fill="var(--mui-color-card_hl-title)">
   <path
     d="M234-276q51-39 114-61.5T480-360q69 0 132 22.5T726-276q35-41 54.5-93T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 59 19.5 111t54.5 93Zm246-164q-59 0-99.5-40.5T340-580q0-59 40.5-99.5T480-720q59 0 99.5 40.5T620-580q0 59-40.5 99.5T480-440Zm0 360q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q53 0 100-15.5t86-44.5q-39-29-86-44.5T480-280q-53 0-100 15.5T294-220q39 29 86 44.5T480-160Zm0-360q26 0 43-17t17-43q0-26-17-43t-43-17q-26 0-43 17t-17 43q0 26 17 43t43 17Zm0-60Zm0 360Z" />
 </svg>
@@ -316,8 +365,8 @@ body.dark{
 
 <div class="progress_circular_indeterminate">
 <svg width="28" height="28" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg"
-  transform='scale(2)'>>
-    <circle cx="14" cy="14" r="12.5" fill-opacity="0" stroke-width="3" stroke="var(--primary)" stroke-dasharray="61.0905 10000" stroke-linecap="round" style="transform:rotate(-95deg) scale(10)" transform-origin="center" class="progress_circular_indeterminate_circle"></circle>
+  transform='scale(2)'>
+    <circle cx="14" cy="14" r="12.5" fill-opacity="0" stroke-width="3" stroke="var(--mui-color-primary)" stroke-dasharray="61.0905 10000" stroke-linecap="round" style="transform:rotate(-95deg) scale(10)" transform-origin="center" class="progress_circular_indeterminate_circle"></circle>
 </svg>
 </div>
 
@@ -453,7 +502,7 @@ var activityInfoDict = {
 }
 
 var lasted = json.data[json.data.length - 1]
-var online = (lasted.timestamp * 1000 - Date.now()) < 10 * 60 * 1000
+var online = (Date.now() - lasted.timestamp * 1000) < 10 * 60 * 1000
 var activityFull = lasted.activity.startsWith(".") ? lasted.package_name + lasted.activity : lasted.activity
 // 最后上传日志时间距离现在大于10min
 
