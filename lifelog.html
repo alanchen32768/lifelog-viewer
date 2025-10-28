@@ -6,9 +6,15 @@
     <link rel="stylesheet" href="./mui.css">
     <link rel="stylesheet" href="./progress.css">
     <!--link rel="stylesheet" href="/mui/icons/MaterialIcons/index.css"-->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&icon_names=arrow_menu_close,arrow_menu_open,color_lens,dark_mode,light_mode,more_vert,unfold_less,unfold_more" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&icon_names=arrow_back,arrow_menu_close,arrow_menu_open,color_lens,dark_mode,light_mode,more_vert,unfold_less,unfold_more" />
   </head>
   <body class="dark mui-theme_dark mui-theme_device_default">
+
+
+<!--
+TODO: 颜色系统 
+图标名备注 color_lens
+ -->
 <style>
 
 /* 颜色 */
@@ -120,16 +126,18 @@ th, td{
 }
 
 .table_container{
-  border: 1px solid #232323;
+  border: 1px solid #FFFFFF;
   width: 100%;
   overflow: scroll;
   border-radius: 4px;
   box-sizing: border-box;
 }
 
+/* 
 tr:hover td{
   background-color: #DDDDDD;
 }
+*/ 
 
 /* 深色模式 */
 
@@ -154,9 +162,12 @@ body.dark{
   border: 1px solid #555555;
 }
 
+/* 
 .dark tr:hover td{
   background-color: #444444;
 }
+*/
+
 
 /* 状态卡片 */
 
@@ -284,7 +295,7 @@ body.dark{
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: 0.5s;
+  transition: 0.5s opacity;
 }
 
 .loading_cover.hide{
@@ -302,7 +313,12 @@ body.dark{
 
 
 <div class="mui-top_app_bar">
-  
+  <label class="mui-top_app_bar_icon_button_wrapper mui-ripple_dispatcher">
+    <button onclick="javascript:window.history.back()" class="mui-button mui-button_icon_button_style mui-ripple mui-rounded" translate="no">
+      <span class="material-symbols-outlined mui-icon">arrow_back</span>
+    </button>
+  </label>
+
   <div class="mui-top_app_bar_title">我在干什么</div>
 
   <div class="mui-top_app_bar_button_group">
@@ -318,7 +334,7 @@ body.dark{
     </label>
     <label class="mui-top_app_bar_button_group_icon_button_wrapper  mui-ripple_dispatcher">
       <button class="mui-button mui-button_icon_button_style mui-ripple mui-rounded" id="theme_toggle" translate="no">
-        <span class="material-symbols-outlined mui-icon">color_lens</span>
+        <span class="material-symbols-outlined mui-icon">light_mode</span>
       </button>
     </label>
   </div>
@@ -390,8 +406,11 @@ const tsFormatter = new Intl.DateTimeFormat('zh-CN', {
 
 var basicInfoKeys = ["time", "applicationLabel", "batteryPct"]
 
+var api_get_recents = "https://alanchen32768.pythonanywhere.com/api/v1/lifelog/get_recents"
+// var api_get_recents = "https://paw.alanchen32768.dpdns.org/api/v1/lifelog/get_recents"
+
 var json = await ((
-  await fetch("https://alanchen32768.pythonanywhere.com/api/v1/lifelog/get_recents")
+  await fetch(api_get_recents)
 ).json())
 
 function row_generate(
@@ -566,6 +585,8 @@ theme_toggle.addEventListener('click', ()=>{
     theme_toggle.querySelector(".mui-icon").innerHTML = 'dark_mode'
   }
 })
+
+theme_toggle.click()
 
 </script>
   </body>
