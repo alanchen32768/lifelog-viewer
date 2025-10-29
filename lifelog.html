@@ -546,7 +546,7 @@ document.querySelector(".status_card").innerText = status_text
 document.querySelector(".status_card .status_info_title").innerText = online ? "在线" : "离线"
 document.querySelector(".status_card .status_info_text").innerText = status_text
 
-// hide_loading_cover()
+hide_loading_cover()
 
 })()
 
@@ -587,6 +587,8 @@ theme_toggle.addEventListener('click', ()=>{
 })
 
 theme_toggle.click()
+
+document.body.style.setProperty('--mui-var-hue', Math.random() * 360)
 
 </script>
   </body>
